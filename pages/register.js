@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import styles from '../styles/Register.module.css'
+import styles from '../styles/Register.module.scss'
 import axios from 'axios';
-import { Header } from '../components'
-// import {API} from '../config'
+import { Header,Footer } from '../components'
 
 export default function Register() {
     const [state, setState] = useState({
@@ -18,7 +17,7 @@ export default function Register() {
     function registerUser(event) {
         event.preventDefault();
         console.table({ name, email, password })
-        axios.post(`http://localhost:5000/api/register`, {
+        axios.post(`${process.env.API}/register`, {
             name,
             email,
             password
@@ -43,17 +42,17 @@ export default function Register() {
             <div className={styles.register}>
                 <form className={styles.form}>
                     <label>Digite seu nome</label>
-                    <input value={name} onChange={changeValue('name')} type={'text'} />
+                    <input value={name}  placeholder="Type your name..." className={`form-control ${styles.items}`} onChange={changeValue('name')} type={'text'} />
                     <label>Digite seu email</label>
-                    <input value={email} className='nav-email' onChange={changeValue('email')} type={'email'} />
+                    <input value={email}  placeholder="Type your email..." className={`form-control ${styles.items}`} onChange={changeValue('email')} type={'email'} />
                     <label>Digite sua senha</label>
-                    <input value={password} onChange={changeValue('password')} type={'password'} />
-                    <label>Salve suas credenciais</label>
-                    <button onClick={registerUser} > Salvar </button>
-                    {error && <h3 style={{ backgroundColor: 'red', marginTop: '3px', fontSize: '90%' }}>
+                    <input value={password}  placeholder="Type your password..." className={`form-control ${styles.items}`} onChange={changeValue('password')} type={'password'} />
+                    
+                    <button className='btn btn-dark mt-2' onClick={registerUser} > Salvar </button>
+                    {error && <h3 style={{ backgroundColor: 'red', marginTop: '5px', fontSize: '90%' }}>
                         {error}
                     </h3>}
-                    {success && <h3 style={{ backgroundColor: 'green', marginTop: '3px', fontSize: '90%' }}>
+                    {success && <h3 style={{ backgroundColor: 'green', marginTop: '5px', fontSize: '90%' }}>
                         {success}
                     </h3>}
                 </form>
@@ -66,7 +65,7 @@ export default function Register() {
         <>
             <Header />
             {registerForm()}
-
+            <Footer/>
         </>
     )
 }

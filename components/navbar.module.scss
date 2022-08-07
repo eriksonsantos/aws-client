@@ -1,0 +1,39 @@
+.Header {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        border-radius: 5px;
+        height: 70%;
+        width: 100px;
+    }
+
+    button a {
+        text-decoration: none;
+        color: white;
+    }
+
+}
+
+.end {
+    padding: 5px;
+
+    button {
+        margin: 5px;
+        background-color: rgb(196, 11, 11);
+
+        border: 0px;
+
+    }
+}
+
+.begin {
+    padding: 5px;
+    button {
+        margin: 5px;
+
+        border: 0px;
+
+    }
+}
